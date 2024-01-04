@@ -5,8 +5,8 @@ router.get('/', (req, res) => {
     res.send('GET students')
 })
 
-router.get('/:id', (req, res) => {
-    res.send('GET students')
+router.post('/:id', (req, res) => {
+    res.send('GET details info students')
 })
 
 router.post('/insert', (req, res) => {

@@ -14,6 +14,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/users', usersRouter)
+app.use('/students', studentsRouter)
 
 app.listen(port, async (req, res) =>
     console.log(`Listen on port: ${port}`)
