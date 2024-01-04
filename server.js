@@ -1,6 +1,9 @@
 import express from 'express'
 import * as dotenv from 'dotenv'
-import userRouter from './router/users.js'
+import {
+    usersRouter,
+    studentsRouter
+} from './router/index.js'
 dotenv.config()
 const app = express()
 
@@ -10,7 +13,7 @@ app.get('/', (req, res) => {
     res.send("Response from root router, ahihi")
 })
 
-app.use('/users', userRouter)
+app.use('/users', usersRouter)
 
 app.listen(port, async (req, res) =>
     console.log(`Listen on port: ${port}`)
