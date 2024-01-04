@@ -5,12 +5,12 @@ router.get('/', (req, res) => {
     res.send('GET students')
 })
 
-router.post('/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     res.send('GET details info students')
 })
 
-router.post('/insert', (req, res) => {
-    res.send('Insert student')
+router.patch('/insert', (req, res) => {
+    res.send('Insert(create new object if not exists) student')
 })
 
 router.post('/update', (req, res) => {
