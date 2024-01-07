@@ -1,21 +1,22 @@
-import express from 'express'
-import * as dotenv from 'dotenv'
-import {
-    usersRouter,
-    studentsRouter
-} from './router/index.js'
-dotenv.config()
+import express from "express";
+import configViewEngine from "./configs/viewEngine.js";
+import inintWebRoute from './router/web.js';
+import inintUsersRoute from './router/users.js';
+require('dotenv').config()
+import connect from './database/database.js';
+import checkToken from "./authentication/auth.js";
+
 const app = express()
+app.use(checkToken)
+const port = process.env.PORT || 8000;
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 
-const port = process.env.PORT ?? 3000
+configViewEngine(app);
+inintWebRoute(app);
+inintUsersRoute(app);
 
-app.get('/', (req, res) => {
-    res.send("Response from root router, ahihi")
+app.listen(port, async () => {
+    await connect()
+    console.log(`Example app listening on port ${port}`)
 })
-
-app.use('/users', usersRouter)
-app.use('/students', studentsRouter)
-
-app.listen(port, async (req, res) =>
-    console.log(`Listen on port: ${port}`)
-)
