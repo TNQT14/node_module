@@ -1,8 +1,5 @@
-getHomepage = (req, res) => {   //logic
+const getHomepage = (req, res) => {   //logic
     return res.render('index.ejs')
 }
 
-
-module.exports = {
-    getHomepage
-}
+export default getHomepage
